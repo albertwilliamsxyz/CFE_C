@@ -23,7 +23,6 @@ type invoiceServiceServerImpl struct {
 }
 
 func (s *invoiceServiceServerImpl) ListInvoices(ctx context.Context, req *api_pb.ListInvoicesRequest) (*api_pb.ListInvoicesResponse, error) {
-	glog.Info("You requested: ", req.ServiceNumber)
 	response, err := ListInvoices(req, s.AccessToken)
 	if err != nil {
 		return nil, err
