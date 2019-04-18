@@ -1,0 +1,23 @@
+protoc:
+  version: 3.7.0
+  includes:
+    - vendor
+  allow_unused_imports: true
+generate:
+  go_options:
+    import_path: api/protos
+  plugins:
+    - name: grpc-gateway
+      flags: logtostderr=true
+      output: ./api/gen/go
+    - name: gogoslick
+      type: gogo
+      flags: plugins=grpc
+      output: ./api/gen/go
+    - name: python
+      output: ./api/gen/python
+    - name: dart
+      path: protoc-gen-dart
+      flags: grpc
+      output: ./api/gen/dart
+
